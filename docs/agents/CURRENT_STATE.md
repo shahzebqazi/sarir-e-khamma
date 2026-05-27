@@ -80,7 +80,9 @@ Full detail: [DEPLOY.md](DEPLOY.md).
 
 1. **Testimonials page** — handoff ready, copy included
 2. **iPhone / mobile layout** — handoff ready
-3. Commit any pending `docs/` + agent doc updates if not yet on `origin/main`
+3. Reconcile **in-progress local edits** if present (e.g. `sessions/+page.svelte`, `alif-sessions-cutout.png` vs `muneem-portrait.jpg`) — may be uncommitted on operator Mac
+
+Agent docs and `CURRENT_STATE.md` are on `origin/main` (commit `1a4ba76+`).
 
 ---
 
