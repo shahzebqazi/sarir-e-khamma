@@ -14,13 +14,23 @@
 		{ href: '/', label: 'Home' },
 		{ href: '/sessions', label: 'Sessions' },
 		{ href: '/about', label: 'About' },
+		{ href: '/testimonials', label: 'Testimonials' },
 		{ href: '/ideas', label: 'Ideas' },
 		{ href: '/glossary', label: 'Glossary' }
 	];
 
+	/** Pathname from `$page` is relative to `paths.base`; nav `href` values are not prefixed. */
+	function routePath(pathname: string) {
+		if (!base) return pathname;
+		if (pathname === base || pathname === `${base}/`) return '/';
+		if (pathname.startsWith(`${base}/`)) return pathname.slice(base.length);
+		return pathname;
+	}
+
 	function isActive(pathname: string, href: string) {
-		const target = href === '/' ? base || '/' : `${base}${href}`;
-		return pathname === target || (href !== '/' && pathname.startsWith(target));
+		const path = routePath(pathname);
+		if (href === '/') return path === '/' || path === '';
+		return path === href || path.startsWith(`${href}/`);
 	}
 </script>
 
@@ -31,9 +41,11 @@
 		</a>
 		<nav class="shell__nav" aria-label="Main">
 			{#each nav as item}
+				{@const active = isActive($page.url.pathname, item.href)}
 				<a
 					class="shell__nav-link"
-					class:shell__nav-link--active={isActive($page.url.pathname, item.href)}
+					class:shell__nav-link--active={active}
+					aria-current={active ? 'page' : undefined}
 					href="{base}{item.href === '/' ? '' : item.href}"
 				>
 					{item.label}
@@ -53,9 +65,14 @@
 
 <style>
 	.shell {
+		box-sizing: border-box;
 		min-height: 100vh;
+		width: 100%;
+		max-width: var(--max-width);
+		margin-inline: auto;
 		display: flex;
 		flex-direction: column;
+		overflow-x: clip;
 	}
 
 	.shell__header {
@@ -65,9 +82,19 @@
 		justify-content: space-between;
 		gap: 1rem;
 		padding: var(--space);
-		max-width: var(--max-width);
-		margin: 0 auto;
 		width: 100%;
+		min-width: 0;
+	}
+
+	@media (max-width: 48rem) {
+		.shell__header {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.shell__nav {
+			width: 100%;
+		}
 	}
 
 	.shell__brand {
@@ -94,6 +121,9 @@
 		font-weight: 400;
 		letter-spacing: 0.02em;
 		opacity: 0.9;
+		min-height: 2.75rem;
+		display: inline-flex;
+		align-items: center;
 	}
 
 	.shell__nav-link:hover {
@@ -112,9 +142,8 @@
 	.shell__main {
 		flex: 1;
 		width: 100%;
-		max-width: var(--max-width);
-		margin: 0 auto;
 		padding: 0 var(--space) calc(var(--space) * 2);
+		min-width: 0;
 	}
 
 	.shell__footer {

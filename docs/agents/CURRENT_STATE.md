@@ -1,7 +1,15 @@
 # Current state (handoff for new agents)
 
-**Updated:** 2026-05-27  
+**Updated:** 2026-05-26  
 **Read this first** if you have no prior chat context.
+
+---
+
+## Regression fix (2026-05-26)
+
+**Cause:** Completed handoff work (portrait, testimonials, poster-faithful routes) lived only in **untracked files** and stash `stash@{0}: wip-unrelated` on `handoff/remove-ideas-title` — never merged to `main`. Production and `main` still had pre-handoff agent slop (landing Baatin/Zaahir defs, sessions pillar list, About `aboutBio` only).
+
+**Do not** `git stash pop` that stash blindly; it also touches glossary import overlays and deletes `muneem-portrait.jpg`. Prefer cherry-picking route/component files or restoring from `handoff/fix-merge-regressions`.
 
 ---
 
@@ -20,16 +28,13 @@
 
 | Route | Status |
 |-------|--------|
-| `/` | Landing — baatin/zaahir, tagline |
-| `/sessions` | Program copy + portrait |
-| `/about` | Bio + Connect (2× Instagram, YouTube, Threads, Spotify) |
+| `/` | Epigraph only + transparent portrait aside |
+| `/sessions` | Poster header + sacred body copy + portrait |
+| `/about` | Poster header + intro paragraphs + Connect icons + portrait |
+| `/testimonials` | W. Worst quote + nav link |
 | `/ideas` | Excalidraw editor (client-only, large bundle) |
-| `/glossary` | Trilingual terms + poets; search filter |
-
-**Not built yet** (see handoffs):
-
-- `/testimonials` — [HANDOFF_TESTIMONIALS.md](../handoffs/HANDOFF_TESTIMONIALS.md)
-- Mobile-first polish — [HANDOFF_VIEWPORTS.md](../handoffs/HANDOFF_VIEWPORTS.md)
+| `/glossary` | Trilingual terms + poets; pin unlock; search filter |
+| `/pins` | Hidden facilitator pin entry (not in nav) |
 
 ---
 

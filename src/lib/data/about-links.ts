@@ -1,16 +1,41 @@
 export type ConnectLink = {
 	label: string;
+	shortLabel: string;
 	href: string;
+	kind: 'instagram' | 'youtube' | 'threads' | 'spotify';
 };
 
 export const connectLinks: ConnectLink[] = [
-	{ label: 'Mohammad Muneem — Instagram', href: 'https://www.instagram.com/mohammad.muneem/' },
-	{ label: 'Alif — Instagram', href: 'https://www.instagram.com/everythingisalif/' },
-	{ label: 'Alif — YouTube', href: 'https://www.youtube.com/@alifsmusic' },
-	{ label: 'Mohammad Muneem — Threads', href: 'https://www.threads.net/@Mohammad.muneem' },
-	{ label: 'Alif — Spotify', href: 'https://open.spotify.com/artist/66PL9mtBViWeqR2wUrS0Bk' }
+	{
+		label: 'Mohammad Muneem — Instagram',
+		shortLabel: 'Instagram (Muneem)',
+		href: 'https://www.instagram.com/mohammad.muneem/',
+		kind: 'instagram'
+	},
+	{
+		label: 'Alif — Instagram',
+		shortLabel: 'Instagram (Alif)',
+		href: 'https://www.instagram.com/everythingisalif/',
+		kind: 'instagram'
+	},
+	{
+		label: 'Alif — YouTube',
+		shortLabel: 'YouTube',
+		href: 'https://www.youtube.com/@alifsmusic',
+		kind: 'youtube'
+	},
+	{
+		label: 'Mohammad Muneem — Threads',
+		shortLabel: 'Threads',
+		href: 'https://www.threads.net/@Mohammad.muneem',
+		kind: 'threads'
+	},
+	{
+		label: 'Alif — Spotify',
+		shortLabel: 'Spotify',
+		href: 'https://open.spotify.com/artist/66PL9mtBViWeqR2wUrS0Bk',
+		kind: 'spotify'
+	}
 ];
 
 export const contactEmail = 'Sarirekhamma.alif@gmail.com';
-
-export const aboutBio = `Sarir e Khamma is a creative writing workshop led by Mohammad Muneem Nazir and Alif—poet, songwriter, and performer. Together they guide writers through sensory detail, emotion, and lived experience, from ghazal craft to songwriting and performance.`;
