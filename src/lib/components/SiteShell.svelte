@@ -77,6 +77,8 @@
 	.shell__brand-script {
 		font-family: var(--font-script);
 		font-size: clamp(1.75rem, 4vw, 2.5rem);
+		font-weight: 400;
+		line-height: 1.1;
 	}
 
 	.shell__nav {
@@ -86,14 +88,22 @@
 	}
 
 	.shell__nav-link {
+		font-family: var(--font-script);
 		text-decoration: none;
-		font-size: 0.95rem;
-		font-weight: 500;
+		font-size: clamp(1.05rem, 2.8vw, 1.35rem);
+		font-weight: 400;
+		letter-spacing: 0.02em;
 		opacity: 0.9;
 	}
 
-	.shell__nav-link:hover,
+	.shell__nav-link:hover {
+		opacity: 1;
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
 	.shell__nav-link--active {
+		color: var(--accent);
 		opacity: 1;
 		text-decoration: underline;
 		text-underline-offset: 0.2em;

@@ -27,12 +27,9 @@ Nav in `SiteShell.svelte` already handles `base`. New routes: add to `nav` array
 | `--bg` / `--bg-deep` | Terracotta background |
 | `--text` | White body |
 | `--accent` | Black subheads (`.subhead-accent`) |
-| `--font-script` | Great Vibes titles (`ScriptTitle`) |
-| `--font-script-accent` | Black script subheads (`ScriptSubhead`, Caveat) |
-| `--font-nav-menu` | Great Vibes (`var(--font-script)`) — site title + nav links |
-| `--font-epigraph-accent` | Helvetica stack — bold phrases in `EpigraphTitle` |
-| `.epigraph-phrase` | Bold sans inside script epigraph (`sab shayr hai baatin`, `kuch kuch zaahir hai`) |
-| `--font-epigraph-accent` | Helvetica stack — epigraph phrase spans (`EpigraphTitle`) |
+| `--font-script` | Great Vibes — `ScriptTitle`, `SiteShell` brand + nav |
+| `--font-script-accent` | Caveat — `ScriptSubhead` |
+| `--font-epigraph-accent` | Helvetica stack — bold phrase spans in `EpigraphTitle` |
 | `--font-body` | Montserrat / Inter |
 | `.tone-dark` / `.tone-light` | Black / white inline spans in `.prose-mixed` paragraphs |
 | `--font-urdu` | Noto Nastaliq Urdu (glossary RTL) |
