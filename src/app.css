@@ -4,6 +4,9 @@
 	--text: #ffffff;
 	--accent: #111111;
 	--font-script: 'Great Vibes', cursive;
+	--font-script-accent: 'Caveat', cursive;
+	--font-nav-menu: var(--font-script);
+	--font-epigraph-accent: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	--font-body: 'Montserrat', 'Inter', system-ui, sans-serif;
 	--font-urdu: 'Noto Nastaliq Urdu', serif;
 	--max-width: 72rem;
@@ -19,11 +22,13 @@
 html {
 	font-size: 100%;
 	scroll-behavior: smooth;
+	overflow-x: clip;
 }
 
 body {
 	margin: 0;
 	min-height: 100vh;
+	position: relative;
 	background: var(--bg);
 	background-image: radial-gradient(
 			ellipse 120% 80% at 20% 0%,
@@ -36,8 +41,41 @@ body {
 	line-height: 1.65;
 }
 
+body::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	pointer-events: none;
+	z-index: 0;
+	opacity: 0.1;
+	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	background-size: 256px 256px;
+}
+
+body > :global(div[style*='display: contents']) {
+	position: relative;
+	z-index: 1;
+}
+
 a {
 	color: inherit;
+}
+
+/* Site shell nav + brand (global — all routes share SiteShell) */
+.shell__brand-script,
+.shell__nav-link {
+	font-family: var(--font-nav-menu);
+	font-synthesis: none;
+}
+
+.shell__nav-link {
+	color: var(--text);
+}
+
+.shell__nav-link--active {
+	color: var(--accent);
+	text-decoration: underline;
+	text-underline-offset: 0.2em;
 }
 
 a:hover {
@@ -50,17 +88,22 @@ img {
 	display: block;
 }
 
-.portrait {
-	filter: grayscale(100%);
-	border-radius: 2px;
-}
-
 .script-title {
 	font-family: var(--font-script);
 	font-weight: 400;
 	font-size: clamp(2.75rem, 8vw, 4.5rem);
 	line-height: 1.1;
 	margin: 0;
+	overflow-wrap: break-word;
+}
+
+/* Epigraph: Great Vibes on the line; bold Helvetica on phrase spans (global — not scoped) */
+.script-title .epigraph-phrase {
+	font-family: var(--font-epigraph-accent) !important;
+	font-weight: 700;
+	font-style: normal;
+	font-synthesis: none;
+	letter-spacing: 0.01em;
 }
 
 .subhead-accent {
@@ -71,9 +114,47 @@ img {
 	margin: 0.25rem 0 0;
 }
 
+.def-line {
+	color: var(--accent);
+	font-weight: 600;
+	font-size: clamp(1rem, 2.2vw, 1.15rem);
+	margin: 0;
+}
+
+.def-line__term::after {
+	content: ' : ';
+}
+
+.def-line__defs {
+	font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}
+
 .urdu {
 	font-family: var(--font-urdu);
 	direction: rtl;
+}
+
+.tone-dark {
+	color: var(--accent);
+}
+
+.tone-light {
+	color: var(--text);
+}
+
+.prose-mixed {
+	margin: 0 0 1.25rem;
+	max-width: 52ch;
 }
 
 .sr-only {

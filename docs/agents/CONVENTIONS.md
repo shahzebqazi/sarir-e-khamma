@@ -22,20 +22,47 @@ Nav in `SiteShell.svelte` already handles `base`. New routes: add to `nav` array
 
 ## Design tokens (`src/app.css`)
 
-| Token | Use |
-|-------|-----|
+| Token / class | Use |
+|---------------|-----|
 | `--bg` / `--bg-deep` | Terracotta background |
 | `--text` | White body |
 | `--accent` | Black subheads (`.subhead-accent`) |
-| `--font-script` | Great Vibes titles |
+| `--font-script` | Great Vibes titles (`ScriptTitle`) |
+| `--font-script-accent` | Black script subheads (`ScriptSubhead`, Caveat) |
+| `--font-nav-menu` | Great Vibes (`var(--font-script)`) — site title + nav links |
+| `--font-epigraph-accent` | Helvetica stack — bold phrases in `EpigraphTitle` |
+| `.epigraph-phrase` | Bold sans inside script epigraph (`sab shayr hai baatin`, `kuch kuch zaahir hai`) |
+| `--font-epigraph-accent` | Helvetica stack — epigraph phrase spans (`EpigraphTitle`) |
 | `--font-body` | Montserrat / Inter |
+| `.tone-dark` / `.tone-light` | Black / white inline spans in `.prose-mixed` paragraphs |
 | `--font-urdu` | Noto Nastaliq Urdu (glossary RTL) |
+| `.def-line` | Poster-style `Term : defs` bullets |
+| `ConnectIcon` + `ConnectLink.kind` | About social icons (`instagram` \| `youtube` \| `threads` \| `spotify`) |
 
 ## External links
 
 ```html
 target="_blank" rel="noopener noreferrer"
 ```
+
+## Responsive
+
+Reuse these breakpoints when adding layout:
+
+| Breakpoint | Use |
+|------------|-----|
+| `48rem` (~768px) | Stack header nav (full-width links); tighten Excalidraw at `40rem` |
+| `40rem` (~640px) | Excalidraw mobile height; glossary term-card two-column defs |
+| `56rem` (~896px) | `PageGrid` main + portrait aside side-by-side (~28rem column) |
+
+## Portrait assets (`static/images/`)
+
+| File | Use |
+|------|-----|
+| `alif-sessions-cutout.png` | Source / archive (orange background) |
+| `alif-sessions-cutout-transparent.png` | **Live UI** — `AlifPortraitAside` (blend with `--bg`) |
+
+Mobile: nav links use `min-height: 2.75rem` (44px tap target); prose blocks `max-width: 52ch`; glossary search `width: 100%`.
 
 ## Dependencies
 
