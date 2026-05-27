@@ -29,43 +29,27 @@ npm run import:glossary
 
 Ghazal terms come from [kashmiri-language-poetry](https://github.com/shahzebqazi/kashmiri-language-poetry). Sarir terms and poets live in `src/lib/data/sarir-terms.ts` and `src/lib/data/poets.ts`.
 
-## Deploy (droplet — git clone)
+## Deploy
 
-Production is **Droplet B** (`137.184.161.182`). Caddy serves static files from `/opt/iconoclast-public/www/gift-for-alif/`. No GitHub Actions SSH secret or deploy keys are required.
+**Live:** https://iconoclastaud.io/gift-for-alif/
 
-### First time (on the server)
-
-```bash
-ssh root@137.184.161.182
-curl -fsSL https://raw.githubusercontent.com/shahzebqazi/sarir-e-khamma/main/scripts/server-first-install.sh | bash
-```
-
-Or clone and run locally on the droplet:
+Build locally, rsync to Droplet B (`137.184.161.182`). On-server `npm run build` often hits OOM (Excalidraw); use:
 
 ```bash
-ssh root@137.184.161.182
-git clone https://github.com/shahzebqazi/sarir-e-khamma.git /opt/iconoclast-public/sarir-e-khamma
-bash /opt/iconoclast-public/sarir-e-khamma/scripts/server-first-install.sh
+bash scripts/deploy-from-mac.sh
 ```
 
-That installs Node 22 (if missing), clones the repo, builds, and copies `build/` into `www/gift-for-alif/`.
-
-### Updates
-
-```bash
-ssh root@137.184.161.182
-bash /opt/iconoclast-public/sarir-e-khamma/scripts/deploy-on-server.sh
-```
-
-### Optional: deploy from your Mac
-
-```bash
-ssh root@137.184.161.182 'bash /opt/iconoclast-public/sarir-e-khamma/scripts/deploy-on-server.sh'
-```
+See [docs/agents/DEPLOY.md](docs/agents/DEPLOY.md) and [docs/agents/CURRENT_STATE.md](docs/agents/CURRENT_STATE.md).
 
 ## CI
 
 GitHub Actions only verifies `npm run build` on push/PR (`.github/workflows/ci.yml`). Deploy is manual on the droplet via `git pull`.
+
+## Agent docs
+
+- [AGENTS.md](AGENTS.md) — entry point for AI agents
+- [docs/agents/](docs/agents/) — architecture, conventions, deploy
+- [docs/handoffs/](docs/handoffs/) — scoped task prompts
 
 ## License
 
