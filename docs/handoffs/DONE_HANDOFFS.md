@@ -209,3 +209,27 @@ Glossary pin unlock: Baatin and Zaahir always visible; pins **2212**, **122**, *
 **Verification:** `npm run build`; glossary locked/unlock UX; `build/pins.html`; deploy to https://iconoclastaud.io/gift-for-alif/
 
 ---
+
+### 2026-05-27 — merge regression restore (`352c8d8`)
+
+Restored poster-faithful landing (epigraph + portrait), sessions, about, testimonials route/nav, and portrait components after WIP on `main` had regressed routes. Documented stash hazard in `CURRENT_STATE.md`.
+
+**Key files:** `src/routes/+page.svelte`, `sessions/+page.svelte`, `about/+page.svelte`, `testimonials/+page.svelte`, `AlifPortraitAside.svelte`, `poster-copy.ts` consumers
+
+**Branch:** `handoff/fix-merge-regressions` merged to `main`
+
+**Verification:** `npm run build`; no agent workshop lede on landing
+
+---
+
+### 2026-05-27 — typography and nav polish (batch)
+
+Font deslop (single token path in `app.css`), Great Vibes on nav/brand (`handoff/nav-font-match-sessions`), Ideas page visible H1 removed.
+
+**Key files:** `src/app.css`, `SiteShell.svelte`, `src/routes/ideas/+page.svelte`
+
+**Verification:** `npm run build`
+
+**Note:** `handoff/fix-landing-copy` was **not** merged — it reintroduces agent marketing copy; keep `main` epigraph-only.
+
+---

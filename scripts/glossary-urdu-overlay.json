@@ -1,0 +1,77 @@
+{
+	"matla": {
+		"label": "matlaʿ",
+		"script": "مطلع",
+		"definition": "غزل کا پہلا شعر؛ اسی سے قافیہ اور ردیف مقرر ہوتے ہیں۔"
+	},
+	"radeef": {
+		"label": "radeef",
+		"script": "ردیف",
+		"definition": "ہر مصرع کے آخر میں دہرایا جانے والا لفظ یا لفظوں کا مجموعہ۔"
+	},
+	"kaafiya": {
+		"label": "qāfiya",
+		"script": "قافیہ",
+		"definition": "ردیف سے پہلے آنے والی ہم آوازی؛ پوری غزل میں یکساں رہتی ہے۔"
+	},
+	"qaafiya": {
+		"label": "qāfiya",
+		"script": "قافیہ",
+		"definition": "قافیے کی ہم آوازی؛ عام استعمال میں “کافیہ” سے مترادف۔"
+	},
+	"behr": {
+		"label": "behr",
+		"script": "بحر",
+		"definition": "شعر کی لمبائی اور تال کا نمونہ؛ عروضی نظام سے۔"
+	},
+	"behr-e-hazaj": {
+		"label": "miṣraʿ",
+		"script": "مَفَاعِیلُنْ",
+		"definition": "بحرِ ہزج کا عام وزن؛ چار حرکات والے پاؤں کی تکرار۔"
+	},
+	"sher": {
+		"label": "sher",
+		"script": "شعر",
+		"definition": "دو مصرعوں کا جوڑا؛ غزل کے بنیادی اکائی۔"
+	},
+	"maqta": {
+		"label": "maqtaʿ",
+		"script": "مقطع",
+		"definition": "غزل کا آخری شعر؛ اکثر تخلص کے ساتھ۔"
+	},
+	"misra-ul-ula-misra-us-sani": {
+		"label": "miṣraʿ",
+		"script": "مصرع",
+		"definition": "شعر کا پہلا اور دوسرا مصرع (اولیٰ اور ثانی)۔"
+	},
+	"aruz-urooz": {
+		"label": "ʿarūż",
+		"script": "عروض",
+		"definition": "عربی–فارسی–اردو نظامِ بحر؛ “عروض” سے مراد تال اور وزن۔"
+	},
+	"majazi": {
+		"label": "majāzī",
+		"script": "مجازی",
+		"definition": "ظاہری، استعاری معنی؛ حقیقی کے مقابلے میں۔"
+	},
+	"haqiqi": {
+		"label": "ḥaqīqī",
+		"script": "حقیقی",
+		"definition": "باطنی، حقیقی معنی؛ مجازی کے برعکس۔"
+	},
+	"khaliq": {
+		"label": "khāliq",
+		"script": "خالق",
+		"definition": "پیدا کرنے والا، خدا۔"
+	},
+	"makhlooq": {
+		"label": "makhlooq",
+		"script": "مخلوق",
+		"definition": "مخلوقات، پیدا کی ہوئی مخلوق۔"
+	},
+	"tasawwuf": {
+		"label": "tasawwuf",
+		"script": "تصوف",
+		"definition": "باطنی طریقت، صوفیانہ راہ؛ شاعری میں حقیقی معنی سے وابستہ۔"
+	}
+}

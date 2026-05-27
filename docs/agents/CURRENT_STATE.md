@@ -1,15 +1,7 @@
 # Current state (handoff for new agents)
 
-**Updated:** 2026-05-26  
+**Updated:** 2026-05-27  
 **Read this first** if you have no prior chat context.
-
----
-
-## Regression fix (2026-05-26)
-
-**Cause:** Completed handoff work (portrait, testimonials, poster-faithful routes) lived only in **untracked files** and stash `stash@{0}: wip-unrelated` on `handoff/remove-ideas-title` — never merged to `main`. Production and `main` still had pre-handoff agent slop (landing Baatin/Zaahir defs, sessions pillar list, About `aboutBio` only).
-
-**Do not** `git stash pop` that stash blindly; it also touches glossary import overlays and deletes `muneem-portrait.jpg`. Prefer cherry-picking route/component files or restoring from `handoff/fix-merge-regressions`.
 
 ---
 
@@ -18,45 +10,52 @@
 | Item | Value |
 |------|--------|
 | URL | https://iconoclastaud.io/gift-for-alif/ |
-| Status | **Live** (HTTP 200) |
+| Status | **Live** (HTTP 200) — redeploy after pushing `main` if local `main` was ahead of production |
 | Repo | https://github.com/shahzebqazi/sarir-e-khamma |
 | Branch | `main` |
+| Last local `main` tip | `352c8d8` (+ 6 commits through glossary pins, font deslop, nav Great Vibes, Ideas H1 removal) |
 
 ---
 
-## What exists today
+## What exists on `main` today
 
 | Route | Status |
 |-------|--------|
-| `/` | Epigraph only + transparent portrait aside |
+| `/` | Sacred epigraph (`EpigraphTitle`) + transparent portrait aside — **no** agent workshop lede |
 | `/sessions` | Poster header + sacred body copy + portrait |
 | `/about` | Poster header + intro paragraphs + Connect icons + portrait |
 | `/testimonials` | W. Worst quote + nav link |
-| `/ideas` | Excalidraw editor (client-only, large bundle) |
+| `/ideas` | Excalidraw editor (client-only); no visible page H1 |
 | `/glossary` | Trilingual terms + poets; pin unlock; search filter |
 | `/pins` | Hidden facilitator pin entry (not in nav) |
 
 ---
 
-## Deploy (important)
+## Regression fix (2026-05-26) — still relevant
 
-**Preferred:** build on Mac (or CI runner with enough RAM), rsync `build/` to droplet.
+**Cause:** Completed handoff work lived only in **untracked files** and stash `stash@{0}: wip-unrelated` on `handoff/remove-ideas-title` — never merged to `main`. Commit `352c8d8` restored poster-faithful routes.
+
+**Do not** `git stash pop` that stash blindly; it also touches glossary import overlays and deletes `muneem-portrait.jpg`. Prefer cherry-picking route/component files from `handoff/fix-merge-regressions` if needed.
+
+**Do not merge** `handoff/fix-landing-copy` — it re-adds invented marketing copy (`Voice, craft, and performance…`). Poster-faithful landing is epigraph-only on `main`.
+
+---
+
+## Git / deploy workflow
+
+| Step | Command |
+|------|---------|
+| Handoff work | `git checkout -b handoff/name` from `main` → implement → `npm run build` → merge to `main` |
+| Publish | `git push origin main` then `bash scripts/deploy-from-mac.sh` |
+| Archive handoff | See [HANDOFF_RULES.md](../handoffs/HANDOFF_RULES.md) → [DONE_HANDOFFS.md](../handoffs/DONE_HANDOFFS.md) |
+
+**Preferred deploy:** build on Mac, rsync `build/` to droplet ([DEPLOY.md](DEPLOY.md)).
 
 ```bash
-npm run build
-rsync -avz --delete -e "ssh -i ~/.ssh/sarir_e_khamma_deploy" \
-  build/ root@137.184.161.182:/opt/iconoclast-public/www/gift-for-alif/
+bash scripts/deploy-from-mac.sh
 ```
 
-Or: `bash scripts/deploy-from-mac.sh` (if present).
-
-**On-server `npm run build` often fails (exit 137 / OOM)** on Droplet B — Excalidraw + Vite client build needs more RAM than the droplet has without swap. Node 22 and git clone **are** on the server at `/opt/iconoclast-public/sarir-e-khamma`; web root is `/opt/iconoclast-public/www/gift-for-alif/`.
-
-- Do **not** use GitHub **Deploy keys** (wrong direction).
-- Do **not** need Actions secret `DEPLOY_SSH_KEY` for current workflow.
-- CI (`.github/workflows/ci.yml`) only verifies `npm run build` on push.
-
-Full detail: [DEPLOY.md](DEPLOY.md).
+On-server `npm run build` often fails (exit 137 / OOM) on Droplet B — Excalidraw + Vite client build needs more RAM than the droplet has without swap.
 
 ---
 
@@ -64,11 +63,14 @@ Full detail: [DEPLOY.md](DEPLOY.md).
 
 | Data | Location |
 |------|----------|
+| Sacred poster strings | `src/lib/data/poster-copy.ts` |
 | Artist links | `src/lib/data/about-links.ts` |
+| About bridge copy | `src/lib/data/about-copy.ts` |
 | Sarir glossary terms | `src/lib/data/sarir-terms.ts` |
 | Ghazal terms (generated) | `src/lib/data/glossary-terms.ts` ← `npm run import:glossary` |
+| Glossary import overlays | `scripts/glossary-citations.json`, `scripts/glossary-urdu-overlay.json` |
 | Poets | `src/lib/data/poets.ts` |
-| Ghazal archive upstream | [kashmiri-language-poetry](https://github.com/shahzebqazi/kashmiri-language-poetry) `legacy/` |
+| Pin groups | `src/lib/data/glossary-pin-groups.ts` |
 
 ---
 
@@ -76,27 +78,27 @@ Full detail: [DEPLOY.md](DEPLOY.md).
 
 - Clone path: `~/Git/sarir-e-khamma`
 - SSH deploy key (operator): `~/.ssh/sarir_e_khamma_deploy` → `root@137.184.161.182`
-- `static/images/alif-sessions-cutout.png` — sessions aside portrait (Alif cutout)
+- Portrait: `static/images/alif-sessions-cutout-transparent.png` (live UI via `AlifPortraitAside`)
+- Design reference PNGs: `docs/design/reference/`
 - `.npmrc`: `legacy-peer-deps=true` (Vite 8 + React plugin)
 
 ---
 
-## Suggested next tasks (priority)
+## Active handoffs
 
-1. **Testimonials page** — handoff ready, copy included
-2. **iPhone / mobile layout** — handoff ready
-3. Reconcile **in-progress local edits** if present (e.g. `sessions/+page.svelte`, `alif-sessions-cutout.png` vs `muneem-portrait.jpg`) — may be uncommitted on operator Mac
-
-Agent docs and `CURRENT_STATE.md` are on `origin/main` (commit `1a4ba76+`).
+**None** — testimonials, viewports, deploy, and content/UI work are archived in [DONE_HANDOFFS.md](../handoffs/DONE_HANDOFFS.md). Templates/references: [handoffs/README.md](../handoffs/README.md).
 
 ---
 
 ## Verify before closing work
 
 ```bash
-npm run check
 npm run build
 curl -sI https://iconoclastaud.io/gift-for-alif/ | head -1
+# All routes:
+for p in '' sessions about testimonials ideas glossary pins; do
+  curl -sI "https://iconoclastaud.io/gift-for-alif/${p}" | head -1
+done
 ```
 
 See [VERIFY.md](VERIFY.md).

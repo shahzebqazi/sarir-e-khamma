@@ -1,0 +1,36 @@
+{
+	"matla": [{ "title": "Frances Pritchett — The Urdu Ghazal", "url": "https://www.columbia.edu/itc/mealac/pritchett/00ghalib/glossary.html" }],
+	"radeef": [{ "title": "Frances Pritchett — The Urdu Ghazal", "url": "https://www.columbia.edu/itc/mealac/pritchett/00ghalib/glossary.html" }],
+	"kaafiya": [{ "title": "Frances Pritchett — The Urdu Ghazal", "url": "https://www.columbia.edu/itc/mealac/pritchett/00ghalib/glossary.html" }],
+	"qaafiya": [{ "title": "Frances Pritchett — The Urdu Ghazal", "url": "https://www.columbia.edu/itc/mealac/pritchett/00ghalib/glossary.html" }],
+	"behr": [{ "title": "Frances Pritchett — The Urdu Ghazal", "url": "https://www.columbia.edu/itc/mealac/pritchett/00ghalib/glossary.html" }],
+	"behr-e-hazaj": [{ "title": "Frances Pritchett — The Urdu Ghazal", "url": "https://www.columbia.edu/itc/mealac/pritchett/00ghalib/glossary.html" }],
+	"sher": [{ "title": "Frances Pritchett — The Urdu Ghazal", "url": "https://www.columbia.edu/itc/mealac/pritchett/00ghalib/glossary.html" }],
+	"maqta": [{ "title": "Frances Pritchett — The Urdu Ghazal", "url": "https://www.columbia.edu/itc/mealac/pritchett/00ghalib/glossary.html" }],
+	"misra-ul-ula-misra-us-sani": [{ "title": "Frances Pritchett — The Urdu Ghazal", "url": "https://www.columbia.edu/itc/mealac/pritchett/00ghalib/glossary.html" }],
+	"aruz-urooz": [{ "title": "Frances Pritchett — The Urdu Ghazal", "url": "https://www.columbia.edu/itc/mealac/pritchett/00ghalib/glossary.html" }],
+	"majazi": [
+		{ "title": "Frances Pritchett — The Urdu Ghazal", "url": "https://www.columbia.edu/itc/mealac/pritchett/00ghalib/glossary.html" },
+		{ "title": "Rekhta Dictionary", "url": "https://www.rekhta.org/dictionary/majazi-meaning" }
+	],
+	"haqiqi": [
+		{ "title": "Frances Pritchett — The Urdu Ghazal", "url": "https://www.columbia.edu/itc/mealac/pritchett/00ghalib/glossary.html" },
+		{ "title": "Rekhta Dictionary", "url": "https://www.rekhta.org/dictionary/haqiqi-meaning" }
+	],
+	"khaliq": [
+		{ "title": "John T. Platts — A Dictionary of Urdu, Classical Hindi, and English (1884)", "detail": "خالق — Creator" },
+		{ "title": "Rekhta Dictionary", "url": "https://www.rekhta.org/dictionary/khaliq-meaning" }
+	],
+	"makhlooq": [
+		{ "title": "John T. Platts — A Dictionary of Urdu, Classical Hindi, and English (1884)", "detail": "مخلوق — created beings" },
+		{ "title": "Rekhta Dictionary", "url": "https://www.rekhta.org/dictionary/makhlooq-meaning" }
+	],
+	"tasawwuf": [
+		{ "title": "Rekhta Dictionary", "url": "https://www.rekhta.org/dictionary/tasawwuf-meaning" },
+		{ "title": "Frances Pritchett — The Urdu Ghazal", "url": "https://www.columbia.edu/itc/mealac/pritchett/00ghalib/glossary.html" }
+	],
+	"behr-hazaj": [
+		{ "title": "Frances Pritchett — The Urdu Ghazal", "url": "https://www.columbia.edu/itc/mealac/pritchett/00ghalib/glossary.html" },
+		{ "title": "Sarir e Khamma workshop", "detail": "Class scansion notes (operator-supplied)" }
+	]
+}

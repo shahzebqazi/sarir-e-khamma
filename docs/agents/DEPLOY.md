@@ -49,4 +49,4 @@ curl -sI https://iconoclastaud.io/gift-for-alif/ | head -1
 
 Expect `HTTP/2 200`.
 
-Handoff: [HANDOFF_DEPLOY.md](../handoffs/HANDOFF_DEPLOY.md).
+Deploy handoff archived: [DONE_HANDOFFS.md](../handoffs/DONE_HANDOFFS.md#2026-05-27--handoff_deploymd).

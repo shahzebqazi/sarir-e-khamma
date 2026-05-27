@@ -24,4 +24,4 @@ Add a new prerendered page at `src/routes/<slug>/` following repo conventions.
 
 ## Examples
 
-- Testimonials: [HANDOFF_TESTIMONIALS.md](HANDOFF_TESTIMONIALS.md)
+- Testimonials: see [DONE_HANDOFFS.md](DONE_HANDOFFS.md#2026-05-26--handoff_testimonialsmd)
