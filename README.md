@@ -12,8 +12,6 @@ npm run import:glossary
 npm run dev
 ```
 
-Open the dev server; routes are under the configured base path in production.
-
 ## Build & preview
 
 ```bash
@@ -25,30 +23,49 @@ Preview serves the static `build/` output with `paths.base` `/gift-for-alif`.
 
 ## Glossary import
 
-Ghazal terms are pulled from [kashmiri-language-poetry](https://github.com/shahzebqazi/kashmiri-language-poetry) `legacy/pages/02-ghazals.html`:
-
 ```bash
 npm run import:glossary
 ```
 
-Sarir terms and poet bios live in `src/lib/data/sarir-terms.ts` and `src/lib/data/poets.ts`.
+Ghazal terms come from [kashmiri-language-poetry](https://github.com/shahzebqazi/kashmiri-language-poetry). Sarir terms and poets live in `src/lib/data/sarir-terms.ts` and `src/lib/data/poets.ts`.
 
-## Deploy
+## Deploy (droplet — git clone)
 
-### GitHub Actions
+Production is **Droplet B** (`137.184.161.182`). Caddy serves static files from `/opt/iconoclast-public/www/gift-for-alif/`. No GitHub Actions SSH secret or deploy keys are required.
 
-On push to `main`, the workflow builds and rsyncs `build/` to:
-
-`root@137.184.161.182:/opt/iconoclast-public/www/gift-for-alif/`
-
-Add repository secret **`DEPLOY_SSH_KEY`** (PEM private key authorized on the server). If the secret is missing, CI still runs `npm run build` but skips rsync with a warning.
-
-### Manual rsync
+### First time (on the server)
 
 ```bash
-npm run build
-rsync -avz --delete build/ root@137.184.161.182:/opt/iconoclast-public/www/gift-for-alif/
+ssh root@137.184.161.182
+curl -fsSL https://raw.githubusercontent.com/shahzebqazi/sarir-e-khamma/main/scripts/server-first-install.sh | bash
 ```
+
+Or clone and run locally on the droplet:
+
+```bash
+ssh root@137.184.161.182
+git clone https://github.com/shahzebqazi/sarir-e-khamma.git /opt/iconoclast-public/sarir-e-khamma
+bash /opt/iconoclast-public/sarir-e-khamma/scripts/server-first-install.sh
+```
+
+That installs Node 22 (if missing), clones the repo, builds, and copies `build/` into `www/gift-for-alif/`.
+
+### Updates
+
+```bash
+ssh root@137.184.161.182
+bash /opt/iconoclast-public/sarir-e-khamma/scripts/deploy-on-server.sh
+```
+
+### Optional: deploy from your Mac
+
+```bash
+ssh root@137.184.161.182 'bash /opt/iconoclast-public/sarir-e-khamma/scripts/deploy-on-server.sh'
+```
+
+## CI
+
+GitHub Actions only verifies `npm run build` on push/PR (`.github/workflows/ci.yml`). Deploy is manual on the droplet via `git pull`.
 
 ## License
 
