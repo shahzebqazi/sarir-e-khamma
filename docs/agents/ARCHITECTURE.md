@@ -12,7 +12,9 @@ Production URL: `https://iconoclastaud.io/gift-for-alif/`
 ## Request flow
 
 ```
-Browser → Caddy (Droplet B) → /srv/www/gift-for-alif/*.html
+Browser → Caddy (Droplet B) → `/srv/www/gift-for-alif/<route>/index.html`
+
+Caddy uses `try_files {path} {path}/index.html`. Prerender must emit directory indexes (`trailingSlash: 'always'` in `+layout.ts`), not flat `sessions.html` files.
 ```
 
 No SSR in production; static HTML + client JS.

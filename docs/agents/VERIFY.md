@@ -19,9 +19,12 @@ npm run preview   # optional: spot-check /gift-for-alif/
 After deploy on droplet:
 
 ```bash
-curl -sI https://iconoclastaud.io/gift-for-alif/
-curl -sI https://iconoclastaud.io/gift-for-alif/glossary.html
+for p in '' sessions about testimonials ideas glossary pins; do
+  curl -sI "https://iconoclastaud.io/gift-for-alif/${p}" | head -1
+done
 ```
+
+All of the above must be `HTTP/2 200`. Clean URLs (no `.html`) require `trailingSlash: 'always'` in `+layout.ts` so Caddy can serve `{path}/index.html`.
 
 ## Do not
 

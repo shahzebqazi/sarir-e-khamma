@@ -1,6 +1,6 @@
 # Current state (handoff for new agents)
 
-**Updated:** 2026-05-27  
+**Updated:** 2026-05-29  
 **Read this first** if you have no prior chat context.
 
 ---
@@ -28,6 +28,14 @@
 | `/ideas` | Excalidraw editor (client-only); no visible page H1 |
 | `/glossary` | Trilingual terms + poets; pin unlock; search filter |
 | `/pins` | Hidden facilitator pin entry (not in nav) |
+
+---
+
+## Routing fix (2026-05-29)
+
+**Symptom:** Home worked; `/sessions`, `/about`, etc. returned **404** on production.  
+**Cause:** Build emitted flat `sessions.html`; Caddy only tries `{path}/index.html`.  
+**Fix:** `export const trailingSlash = 'always'` in `src/routes/+layout.ts`, then redeploy.
 
 ---
 

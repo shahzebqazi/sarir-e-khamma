@@ -5,6 +5,8 @@
 Static `build/` → Caddy serves `/opt/iconoclast-public/www/gift-for-alif/`.  
 **Build locally** (Mac or CI); droplet is publish target only.
 
+**Note:** `my-droplets/scripts/deploy-iconoclast-public.sh` rsyncs the main site with `--delete` into the same `www/` tree. That script excludes `gift-for-alif/` so a main-site deploy does not remove this app. If the live URL 404s after an iconoclast deploy, re-run `bash scripts/deploy-from-mac.sh`.
+
 No GitHub Deploy keys. No Actions `DEPLOY_SSH_KEY` unless you switch back to CI rsync.
 
 | Path on server | Purpose |
